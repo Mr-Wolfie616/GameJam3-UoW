@@ -401,6 +401,8 @@ GameObject:
   - component: {fileID: 674537658}
   - component: {fileID: 674537657}
   - component: {fileID: 674537656}
+  - component: {fileID: 674537661}
+  - component: {fileID: 674537660}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -495,12 +497,56 @@ Transform:
   m_GameObject: {fileID: 674537655}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 0, y: 5.03, z: -2.38}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &674537660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 674537655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 320d07c7755f5d4499da8731f93dd537, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FishSlop.ObjectFloat
+  hullCollider: {fileID: 0}
+  restDepth: 0.5
+  damping: 0.6
+  torqueDamping: 5
+  horizontalDrag: 2
+--- !u!54 &674537661
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 674537655}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -955,6 +1001,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1499728460}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b03caf3963a960841b3d72395e82a42c,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1499728463}
   m_SourcePrefab: {fileID: 100100000, guid: b03caf3963a960841b3d72395e82a42c, type: 3}
 --- !u!4 &1499728457 stripped
 Transform:
@@ -978,6 +1028,34 @@ MonoBehaviour:
   riseSpeed: 0.5
   minHeight: 0
   maxHeight: 10
+  waterLevel: 0
+--- !u!114 &1499728463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 601547039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3280ff934841aa042ba74005a07d7bfc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FishSlop.WaterWaves
+  wave1:
+    steepness: 0.01
+    wavelength: 1
+    angle: 1
+    phaseOffset: 1.22
+  wave2:
+    steepness: 0.005
+    wavelength: 5
+    angle: 45
+    phaseOffset: -0.64
+  wave3:
+    steepness: 0.01
+    wavelength: 9
+    angle: 20
+    phaseOffset: -3.19
 --- !u!1 &2101515318
 GameObject:
   m_ObjectHideFlags: 0
