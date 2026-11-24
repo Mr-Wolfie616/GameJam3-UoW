@@ -39,10 +39,4 @@ public class AudioManager : MonoBehaviour
     {
         sfxSource.PlayOneShot(splashSFX);
     }
-
-    public void test()
-    {
-        AudioManager audioManager = FindFirstObjectByType<AudioManager>();
-        audioManager.SplashSFX();
-    }
 }

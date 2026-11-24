@@ -39,7 +39,8 @@ public class PlayerHealth : MonoBehaviour
 
     public void Kill()
     {
-        // Audio clip here
+        AudioManager audioManager = FindFirstObjectByType<AudioManager>();
+        audioManager.SplashSFX();
 
         if (currentLife >= maxLifes)
         {
