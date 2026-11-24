@@ -3,7 +3,7 @@ using UnityEngine;
 public class ObjectHold : MonoBehaviour
 {
     public Transform mouth;
-    public float pickupRange = 1.5f;
+    public float pickupRange = 2f;
 
     private Rigidbody heldObject;
 

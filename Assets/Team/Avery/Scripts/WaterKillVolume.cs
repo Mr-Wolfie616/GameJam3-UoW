@@ -6,7 +6,8 @@ public class WaterKillVolume : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            //other.GetComponent<PlayerHealth>().Kill();
+            //other.GetComponent<PlayerHe
+            //alth>().Kill();
             Debug.Log("Player has entered the water kill volume.");
         }
     }
