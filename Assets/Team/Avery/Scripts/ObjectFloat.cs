@@ -1,79 +1,145 @@
-using System;
-using UnityEngine;
+//using System;
+//using UnityEngine;
 
-namespace FishSlop
-{
-    [RequireComponent(typeof(Rigidbody))]
-    public class ObjectFloat : MonoBehaviour
-    {
-        [SerializeField] private Collider hullCollider;
-        [SerializeField] private float restDepth = 0.5f;
-        [SerializeField] private float damping = 0.4f;
-        [SerializeField] private float torqueDamping = 0.5f;
-        [SerializeField] private float horizontalDrag = 2f;
+//namespace FishSlop
+//{
+//    [RequireComponent(typeof(Rigidbody))]
+//    public class ObjectFloat : MonoBehaviour
+//    {
+//        [SerializeField] private Collider hullCollider;
+//        [SerializeField] private float restDepth = 0.5f;
+//        [SerializeField] private float damping = 0.4f;
+//        [SerializeField] private float torqueDamping = 0.5f;
+//        [SerializeField] private float horizontalDrag = 2f;
 
-        private Rigidbody rb;
-        private Vector3[] floatPoints = new Vector3[4];
-        private float strength;
-        private float dampingForce;
-        private bool ready;
+//        public Transform playerTrans;
+//        private Rigidbody rb;
+//        private Vector3[] floatPoints = new Vector3[4];
+//        private float strength;
+//        private float dampingForce;
+//        private bool ready;
+//        private float cacheTorqueDamping;
 
-        private void Awake()
-        {
-            rb = GetComponent<Rigidbody>();
-            if (hullCollider == null) hullCollider = GetComponent<Collider>();
-            InitialiseBuoyancy();
-        }
+//        private float verticalOffset;
 
-        private void InitialiseBuoyancy()
-        {
-            Physics.SyncTransforms();
+//        private bool playerOnBoard = false;
 
-            Bounds b = hullCollider.bounds;
-            floatPoints[0] = transform.InverseTransformPoint(new Vector3(b.min.x, b.min.y, b.min.z));
-            floatPoints[1] = transform.InverseTransformPoint(new Vector3(b.max.x, b.min.y, b.min.z));
-            floatPoints[2] = transform.InverseTransformPoint(new Vector3(b.min.x, b.min.y, b.max.z));
-            floatPoints[3] = transform.InverseTransformPoint(new Vector3(b.max.x, b.min.y, b.max.z));
+//        private Vector3 playerScale;
+//        public Transform childAnchor;
 
-            strength = rb.mass * Physics.gravity.magnitude / (floatPoints.Length * restDepth);
-            dampingForce = damping * 2f * Mathf.Sqrt(strength * rb.mass / floatPoints.Length);
+//        private void Awake()
+//        {
+//            playerScale = playerTrans != null ? playerTrans.localScale : Vector3.one;
+//            rb = GetComponent<Rigidbody>();
+//            if (hullCollider == null) hullCollider = GetComponent<Collider>();
+//            InitialiseBuoyancy();
+//            cacheTorqueDamping = torqueDamping;
 
-            ready = true;
-        }
+//            if (playerTrans == null)
+//            {
+//                GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+//                if (playerObj != null)
+//                {
+//                    playerTrans = playerObj.transform;
+//                }
+//            }
 
-        private void FixedUpdate()
-        {
-            if (!ready || WaterWaves.Instance == null) return;
+//            GameObject anchorObj = new GameObject($"{transform.name}_Anchor");
+//            anchorObj.transform.position = transform.position;
+//            anchorObj.transform.rotation = transform.rotation;
+//            childAnchor = anchorObj.transform;
 
-            float t = Time.time;
+//            if (childAnchor != null)
+//            {
+//                childAnchor.parent = null;
+//            }
+//        }
 
-            foreach (Vector3 floatPoint in floatPoints)
-            {
-                Vector3 point = transform.TransformPoint(floatPoint);
-                float depth = WaterWaves.Instance.GetHeight(point, t) - point.y;
+//        private void Update()
+//        {
+//            if (playerOnBoard && WaterWaves.Instance != null)
+//            {
+//                Vector3 pos = transform.position;
+//                float targetY = WaterWaves.Instance.GetHeight(pos, Time.time) + restDepth + (verticalOffset / 2);
+//                float smoothY = Mathf.Lerp(pos.y, targetY, 0.15f);
+//                transform.position = new Vector3(pos.x, smoothY, pos.z);
 
-                if (depth <= 0f) continue;
+//                Quaternion targetRot = Quaternion.Euler(0f, transform.rotation.eulerAngles.y, 0f);
+//                transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, 0.15f);
 
-                Vector3 pointVelocity = rb.GetPointVelocity(point);
+//                childAnchor.transform.position = new Vector3(pos.x, smoothY, pos.z); ;
+//                childAnchor.transform.rotation = transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, 0.15f); ;
+//            }
+//        }
 
-                float force = depth * strength - pointVelocity.y * dampingForce;
+//        private void InitialiseBuoyancy()
+//        {
+//            Physics.SyncTransforms();
 
-                if (force > 0f) rb.AddForceAtPosition(Vector3.up * force, point);
+//            Bounds b = hullCollider.bounds;
+//            verticalOffset = b.min.y - transform.position.y;
+//            floatPoints[0] = transform.InverseTransformPoint(new Vector3(b.min.x, b.min.y, b.min.z));
+//            floatPoints[1] = transform.InverseTransformPoint(new Vector3(b.max.x, b.min.y, b.min.z));
+//            floatPoints[2] = transform.InverseTransformPoint(new Vector3(b.min.x, b.min.y, b.max.z));
+//            floatPoints[3] = transform.InverseTransformPoint(new Vector3(b.max.x, b.min.y, b.max.z));
 
-                float submersion = Mathf.Clamp01(depth / restDepth);
+//            strength = rb.mass * Physics.gravity.magnitude / (floatPoints.Length * restDepth);
+//            dampingForce = damping * 2f * Mathf.Sqrt(strength * rb.mass / floatPoints.Length);
 
-                Vector3 horizontalVelocity = Vector3.ProjectOnPlane(pointVelocity, Vector3.up);
-                Vector3 dragForce = horizontalDrag * submersion * -horizontalVelocity;
+//            ready = true;
+//        }
 
-                rb.AddForceAtPosition(dragForce, point);
+//        private void FixedUpdate()
+//        {
+//            if (!ready || WaterWaves.Instance == null) return;
 
-                if (Vector3.Dot(transform.up, Vector3.up) < 0.995f)
-                {
-                    Vector3 torque = Vector3.Cross(transform.up, Vector3.up);
-                    Debug.DrawRay(point, torque, Color.red);
-                    rb.AddTorque(torque * torqueDamping);
-                }
-            }
-        }
-    }
-}
+//            float t = Time.time;
+
+//            if (playerOnBoard)
+//            {
+//                rb.isKinematic = true;
+//                rb.useGravity = false;
+//                return;
+//            }
+//            else
+//            {
+//                rb.useGravity = true;
+//                rb.isKinematic = false;
+//            }
+
+//            foreach (Vector3 floatPoint in floatPoints)
+//            {
+//                Vector3 point = transform.TransformPoint(floatPoint);
+//                float waterHeight = WaterWaves.Instance.GetHeight(point, t);
+//                float depth = waterHeight - point.y;
+
+//                if (depth <= 0f) continue;
+
+//                Vector3 pointVelocity = rb.GetPointVelocity(point);
+//                float force = depth * strength - pointVelocity.y * dampingForce;
+
+//                if (force > 0f) rb.AddForceAtPosition(Vector3.up * force, point);
+
+//                float submersion = Mathf.Clamp01(depth / restDepth);
+//                Vector3 horizontalVelocity = Vector3.ProjectOnPlane(pointVelocity, Vector3.up);
+//                Vector3 dragForce = horizontalDrag * submersion * -horizontalVelocity;
+
+//                rb.AddForceAtPosition(dragForce, point);
+
+//                float uprightDot = Vector3.Dot(transform.up, Vector3.up);
+//                if (uprightDot < 0.995f)
+//                {
+//                    Vector3 torque = Vector3.Cross(transform.up, Vector3.up);
+//                    rb.AddTorque(torque * torqueDamping);
+//                }
+//            }
+//        }
+
+//        public void PlayerOnBoard(bool a, Transform p)
+//        {
+//            Debug.Log($"PlayerOnBoard called with value: {a}");
+//            playerOnBoard = a;
+//            playerTrans = p;
+//        }
+//    }
+//}
