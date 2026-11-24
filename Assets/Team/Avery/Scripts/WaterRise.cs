@@ -6,6 +6,7 @@ public class WaterRise : MonoBehaviour
     [SerializeField] private float riseSpeed = 0.5f;
     [SerializeField] private float minHeight = 0f;
     [SerializeField] private float maxHeight = 10f;
+    public float waterLevel;
 
     private void Awake()
     {
@@ -19,6 +20,7 @@ public class WaterRise : MonoBehaviour
         if (transform.position.y < maxHeight)
         {
             transform.position += Vector3.up * riseSpeed * Time.deltaTime;
+            waterLevel = transform.position.y;
         }
         else
         {
