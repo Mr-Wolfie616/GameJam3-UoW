@@ -103,7 +103,11 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c9bb9b16c96e923439e7793e830573a6,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 6503337979647633276}
+      addedObject: {fileID: 7548260338211353891}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c9bb9b16c96e923439e7793e830573a6,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7594660104276965660}
   m_SourcePrefab: {fileID: 100100000, guid: c9bb9b16c96e923439e7793e830573a6, type: 3}
 --- !u!1 &188202755703744447 stripped
 GameObject:
@@ -159,7 +163,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &6503337979647633276
+--- !u!114 &7548260338211353891
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -168,11 +172,34 @@ MonoBehaviour:
   m_GameObject: {fileID: 188202755703744447}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 320d07c7755f5d4499da8731f93dd537, type: 3}
+  m_Script: {fileID: 11500000, guid: 0f9dfb19cc8361643a436bfe7485c17e, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FishSlop.ObjectFloat
-  hullCollider: {fileID: 3142417158702411298}
-  restDepth: 0.086506285
-  damping: 0.4
-  torqueDamping: 0.5
-  horizontalDrag: 2
+  m_EditorClassIdentifier: Assembly-CSharp::WaterSplash
+  waterRise: {fileID: 0}
+  splashPrefab: {fileID: 8585649807550039280, guid: 224c4574d4d272a4b92df19ede61b338,
+    type: 3}
+  bubblesPrefab: {fileID: 3381772053132140057, guid: 673dd86dc0590e84a976de2f8dc35a63,
+    type: 3}
+  splashSize: 1
+  minFallSpeed: 0
+  playSplashSound: 1
+  cameraRig: {fileID: 0}
+  cameraHoldTime: 0.75
+--- !u!114 &7594660104276965660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 188202755703744447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a39896a510d20384d903795f7f6dabcb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ToyFloat
+  waterRise: {fileID: 0}
+  floatDepth: 0.05
+  floatStrength: 20
+  waterDrag: 3
+  bobAmount: 0.05
+  bobSpeed: 1.5
