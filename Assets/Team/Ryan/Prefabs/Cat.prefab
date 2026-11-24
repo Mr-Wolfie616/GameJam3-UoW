@@ -18,9 +18,11 @@ GameObject:
   - component: {fileID: 6909801638044691258}
   - component: {fileID: 6579821763271947378}
   - component: {fileID: 633009346292978293}
+  - component: {fileID: 5671223931989584157}
+  - component: {fileID: 2934256707871703978}
   m_Layer: 0
   m_Name: Cat
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -382,6 +384,58 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.31635594, y: 0.7899076, z: 1.9444854}
   m_Center: {x: -0.015203476, y: 0.35719448, z: -0.072586894}
+--- !u!114 &5671223931989584157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2690960019517671133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1abde15bc8177a94eb813abbb784d904, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
+  wetMesh: {fileID: 0}
+  wetMat: {fileID: 0}
+  wetDamping: 0
+  spawnPoint: {fileID: 0}
+  currentLife: 1
+  onPlayerMadeWet:
+    m_PersistentCalls:
+      m_Calls: []
+  onPlayerFullyKilled:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2934256707871703978}
+        m_TargetAssemblyTypeName: PlayerDeath, Assembly-CSharp
+        m_MethodName: ShowDeathScreen
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2934256707871703978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2690960019517671133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7937783f5c2008a40998810b23bc4fce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerDeath
+  deathPanel: {fileID: 0}
+  playerController: {fileID: 7697551540218988564}
+  cameraRig: {fileID: 0}
+  waterRise: {fileID: 0}
+  endGameInput: {fileID: 0}
 --- !u!1 &4536704227343591850
 GameObject:
   m_ObjectHideFlags: 0
