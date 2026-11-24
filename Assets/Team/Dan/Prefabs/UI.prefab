@@ -3179,7 +3179,7 @@ MonoBehaviour:
   thirdPartyText: {fileID: 8433540837918433918}
   deathPanel: {fileID: 369927960222347324}
   winPanel: {fileID: 7132129269678232037}
-  pickupNotificationPanel: {fileID: 668279068532564256}
+  pickupNotificationPanel: {fileID: 1526207757246539311}
 --- !u!1 &6763000612111596567
 GameObject:
   m_ObjectHideFlags: 0
