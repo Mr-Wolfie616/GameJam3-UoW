@@ -7,7 +7,7 @@ public class ObjectFloat : MonoBehaviour
     [SerializeField] private WaterRise waterRise;
     private Transform player;
 
-    [SerializeField] private float floatHeight = 1f;
+    [SerializeField] private float floatHeight = 0f;
     [SerializeField] private float followSpeed = 5f;
 
     [SerializeField] private Vector2 bobSpeedRange = new Vector2(0.8f, 1.4f);
