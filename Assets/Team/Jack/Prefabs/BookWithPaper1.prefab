@@ -101,6 +101,7 @@ GameObject:
   - component: {fileID: 931682951243597988}
   - component: {fileID: 1127114687622532791}
   - component: {fileID: 5533388687604340260}
+  - component: {fileID: 8121644141920782741}
   m_Layer: 0
   m_Name: BookWithPaper1
   m_TagString: Untagged
@@ -182,6 +183,27 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8121644141920782741
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2311179017971874124}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.019999998, y: 0.019999996, z: 0.019999996}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &9060761495182757932
 GameObject:
   m_ObjectHideFlags: 0
