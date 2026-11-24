@@ -13,7 +13,7 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] private GameObject thirdPartyText;
     [SerializeField] private GameObject deathPanel;
     [SerializeField] private GameObject winPanel;
-    [SerializeField] private Image pickupNotificationPanel;
+    [SerializeField] private GameObject pickupNotificationPanel;
     float fadeTime = 1.0f;
     bool toggle;
     private void Start()
@@ -22,9 +22,21 @@ public class MainMenuManager : MonoBehaviour
         creditsText.SetActive(true);
         thirdPartyText.SetActive(false);
         toggle = false;
-        Color c = pickupNotificationPanel.color;
-        c.a = 0;
-        pickupNotificationPanel.color = c;
+        pickupNotificationPanel.SetActive(false);
+    }
+
+    private void Update()
+    {
+        if (mainMenuPanel.activeInHierarchy || creditsPanel.activeInHierarchy || deathPanel.activeInHierarchy || winPanel.activeInHierarchy)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
     }
 
     public void StartGame()
@@ -76,34 +88,13 @@ public class MainMenuManager : MonoBehaviour
 
     public void PickupNotif()
     {
-        StartCoroutine(FadeIn(pickupNotificationPanel));
+        StartCoroutine(PickupNotification(pickupNotificationPanel));
     }
 
-    IEnumerator FadeOut(Image image)
+    IEnumerator PickupNotification(GameObject image)
     {
-        float elapsedTime = 0.0f;
-        Color c = image.color;
-        while (elapsedTime < fadeTime)
-        {
-            elapsedTime += Time.deltaTime;
-            c.a = 1.0f - Mathf.Clamp01(elapsedTime / fadeTime);
-            image.color = c;
-        }
-        yield return null;
-    }
-
-    IEnumerator FadeIn(Image image)
-    {
-        float elapsedTime = 0.0f;
-        Color c = image.color;
-        while (elapsedTime < fadeTime)
-        {
-            elapsedTime += Time.deltaTime;
-            c.a = Mathf.Clamp01(elapsedTime / fadeTime);
-            image.color = c;
-        }
+        image.SetActive(true);
         yield return new WaitForSeconds(2f);
-
-        StartCoroutine(FadeOut(image));
+        image.SetActive(false);
     }
 }
