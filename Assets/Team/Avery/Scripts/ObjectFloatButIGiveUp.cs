@@ -1,9 +1,11 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 [DefaultExecutionOrder(-100)]
 public class ObjectFloat : MonoBehaviour
 {
     [SerializeField] private WaterRise waterRise;
+    private Transform player;
 
     [SerializeField] private float floatHeight = 1f;
     [SerializeField] private float followSpeed = 5f;
@@ -21,6 +23,7 @@ public class ObjectFloat : MonoBehaviour
         bobSpeed = Random.Range(bobSpeedRange.x, bobSpeedRange.y);
         bobAmount = Random.Range(bobAmountRange.x, bobAmountRange.y);
         bobPhase = Random.Range(0f, Mathf.PI * 2f);
+        player = GameObject.FindGameObjectWithTag("Player")?.transform;
     }
 
     private void Start()
@@ -62,6 +65,14 @@ public class ObjectFloat : MonoBehaviour
         Vector3 p = transform.position;
         p.y = y;
         transform.position = p;
-        Physics.SyncTransforms();
+        if (player != null)
+        {
+            Vector3 playerPos = player.position;
+            float distance = Vector3.Distance(new Vector3(playerPos.x, 0f, playerPos.z), new Vector3(p.x, 0f, p.z));
+            if (distance < 2f)
+            {
+                Physics.SyncTransforms();
+            }
+        }
     }
 }
