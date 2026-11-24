@@ -60,10 +60,8 @@ public class PlayerHealth : MonoBehaviour
     {
         if (spawnPoint == null) return;
 
-        characterController.enabled = false;
         transform.position = spawnPoint.position;
         transform.rotation = spawnPoint.rotation;
-        characterController.enabled = true;
     }
 
     public void MakeWet()
