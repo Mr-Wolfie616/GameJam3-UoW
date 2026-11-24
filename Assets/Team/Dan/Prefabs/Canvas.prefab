@@ -2169,6 +2169,7 @@ MonoBehaviour:
   mainMenuPanel: {fileID: 6655938702472591409}
   creditsPanel: {fileID: 1567485243659867120}
   deathPanel: {fileID: 3966294514908902541}
+  winPanel: {fileID: 100652360482513898}
 --- !u!1 &6143267127718362679
 GameObject:
   m_ObjectHideFlags: 0
@@ -3448,7 +3449,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 3421853325905906188}
         m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
         m_MethodName: BackToMenu
         m_Mode: 1
