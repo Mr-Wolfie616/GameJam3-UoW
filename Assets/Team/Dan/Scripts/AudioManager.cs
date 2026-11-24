@@ -6,8 +6,8 @@ public class AudioManager : MonoBehaviour
 {
     [Header("Audio Tracks/Clips")]
     [SerializeField] AudioClip backgroundMusic;
-    [SerializeField] AudioClip meowSFX;
-    [SerializeField] AudioClip splashSFX;
+    [SerializeField] AudioClip[] meowSFX;
+    [SerializeField] AudioClip[] splashSFX;
     [Header("References")]
     [SerializeField] AudioSource musicSource;
     [SerializeField] AudioSource sfxSource;
@@ -32,11 +32,16 @@ public class AudioManager : MonoBehaviour
 
     private void Update()
     {
-        if (meowButton.triggered) sfxSource.PlayOneShot(meowSFX);
+        if (meowButton.triggered)
+        {
+            int i = Random.Range(0, meowSFX.Length);
+            sfxSource.PlayOneShot(meowSFX[i]);
+        }
     }
 
     public void SplashSFX()
     {
-        sfxSource.PlayOneShot(splashSFX);
+        int i = Random.Range(0, splashSFX.Length);
+        sfxSource.PlayOneShot(splashSFX[i]);
     }
 }
