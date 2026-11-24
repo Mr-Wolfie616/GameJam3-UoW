@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: 633009346292978293}
   - component: {fileID: 5671223931989584157}
   - component: {fileID: 2934256707871703978}
+  - component: {fileID: 5867458363959011116}
   m_Layer: 0
   m_Name: Cat
   m_TagString: Player
@@ -403,7 +404,19 @@ MonoBehaviour:
   currentLife: 1
   onPlayerMadeWet:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5867458363959011116}
+        m_TargetAssemblyTypeName: WaterSplash, Assembly-CSharp
+        m_MethodName: SplashAndHoldCamera
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onPlayerFullyKilled:
     m_PersistentCalls:
       m_Calls:
@@ -436,6 +449,28 @@ MonoBehaviour:
   cameraRig: {fileID: 0}
   waterRise: {fileID: 0}
   endGameInput: {fileID: 0}
+--- !u!114 &5867458363959011116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2690960019517671133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f9dfb19cc8361643a436bfe7485c17e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WaterSplash
+  waterRise: {fileID: 0}
+  splashPrefab: {fileID: 2586947100091486788, guid: bf97aaa7a02fd834782d32dcc497cbef,
+    type: 3}
+  bubblesPrefab: {fileID: 3381772053132140057, guid: 673dd86dc0590e84a976de2f8dc35a63,
+    type: 3}
+  splashSize: 1
+  minFallSpeed: 0
+  playSplashSound: 0
+  cameraRig: {fileID: 0}
+  cameraHoldTime: 0.75
 --- !u!1 &4536704227343591850
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainMenuManager : MonoBehaviour
 {
@@ -11,6 +13,8 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] private GameObject thirdPartyText;
     [SerializeField] private GameObject deathPanel;
     [SerializeField] private GameObject winPanel;
+    [SerializeField] private Image pickupNotificationPanel;
+    float fadeTime = 1.0f;
     bool toggle;
     private void Start()
     {
@@ -18,6 +22,9 @@ public class MainMenuManager : MonoBehaviour
         creditsText.SetActive(true);
         thirdPartyText.SetActive(false);
         toggle = false;
+        Color c = pickupNotificationPanel.color;
+        c.a = 0;
+        pickupNotificationPanel.color = c;
     }
 
     public void StartGame()
@@ -65,5 +72,38 @@ public class MainMenuManager : MonoBehaviour
             thirdPartyText.SetActive(false);
             toggle = true;
         }
+    }
+
+    public void PickupNotif()
+    {
+        StartCoroutine(FadeIn(pickupNotificationPanel));
+    }
+
+    IEnumerator FadeOut(Image image)
+    {
+        float elapsedTime = 0.0f;
+        Color c = image.color;
+        while (elapsedTime < fadeTime)
+        {
+            elapsedTime += Time.deltaTime;
+            c.a = 1.0f - Mathf.Clamp01(elapsedTime / fadeTime);
+            image.color = c;
+        }
+        yield return null;
+    }
+
+    IEnumerator FadeIn(Image image)
+    {
+        float elapsedTime = 0.0f;
+        Color c = image.color;
+        while (elapsedTime < fadeTime)
+        {
+            elapsedTime += Time.deltaTime;
+            c.a = Mathf.Clamp01(elapsedTime / fadeTime);
+            image.color = c;
+        }
+        yield return new WaitForSeconds(2f);
+
+        StartCoroutine(FadeOut(image));
     }
 }

@@ -1,15 +1,27 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class ObjectHold : MonoBehaviour
 {
     public Transform mouth;
     public float pickupRange = 2f;
+    public InputAction pickupInput;
 
     private Rigidbody heldObject;
 
+    private void OnEnable()
+    {
+        pickupInput.Enable();
+    }
+
+    private void OnDisable()
+    {
+        pickupInput.Disable();
+    }
+
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (pickupInput.triggered)
         {
             if (heldObject == null)
                 Pickup();
@@ -40,6 +52,10 @@ public class ObjectHold : MonoBehaviour
             heldObject.transform.SetParent(mouth);
             heldObject.transform.localPosition = Vector3.zero;
             heldObject.transform.localRotation = Quaternion.identity;
+
+            MainMenuManager menuManager = FindFirstObjectByType<MainMenuManager>();
+            menuManager.PickupNotif();
+
             return;
         }
     }
