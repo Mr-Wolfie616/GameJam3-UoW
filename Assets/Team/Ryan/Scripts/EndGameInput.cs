@@ -62,6 +62,10 @@ public class EndGameInput : MonoBehaviour
             endScreen.SetActive(true);
         }
 
+        // unlock the mouse so the player can click on the end screen
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
         if (finalScoreText != null)
         {
             finalScoreText.text = "You collected " + toyZone.currentToys + " / " + toyZone.totalToys + " toys!";
