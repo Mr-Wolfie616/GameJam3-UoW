@@ -25,7 +25,8 @@ public class CatAnimation : MonoBehaviour
         Vector3 horizontalVelocity = controller.velocity;
         horizontalVelocity.y = 0f;
 
-        animator.SetFloat("Speed", horizontalVelocity.magnitude);
+        animator.SetFloat("SpeedMulti", 1 + horizontalVelocity.normalized.magnitude);
+        animator.SetBool("IsMoving", horizontalVelocity.magnitude > 0.1f);
         animator.SetFloat("VerticalSpeed", controller.velocity.y);
         animator.SetBool("IsGrounded", controller.isGrounded);
     }
