@@ -5,11 +5,10 @@ using UnityEngine.InputSystem;
 public class AudioManager : MonoBehaviour
 {
     [Header("Audio Tracks/Clips")]
-    [SerializeField] AudioClip backgroundMusic;
     [SerializeField] AudioClip[] meowSFX;
     [SerializeField] AudioClip[] splashSFX;
+    [SerializeField] AudioClip coinSFX;
     [Header("References")]
-    [SerializeField] AudioSource musicSource;
     [SerializeField] AudioSource sfxSource;
     [SerializeField] InputAction meowButton;
 
@@ -21,13 +20,6 @@ public class AudioManager : MonoBehaviour
     private void OnDisable()
     {
         meowButton.Disable();
-    }
-
-    private void Start()
-    {
-        musicSource.clip = backgroundMusic;
-        musicSource.Play();
-        musicSource.loop = true;
     }
 
     private void Update()
@@ -43,5 +35,10 @@ public class AudioManager : MonoBehaviour
     {
         int i = Random.Range(0, splashSFX.Length);
         sfxSource.PlayOneShot(splashSFX[i]);
+    }
+
+    public void CoinSFX()
+    {
+        sfxSource.PlayOneShot(coinSFX);
     }
 }

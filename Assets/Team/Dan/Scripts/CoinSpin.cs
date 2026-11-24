@@ -24,4 +24,13 @@ public class CoinSpin : MonoBehaviour
         float yOffset = Mathf.Sin(Time.time * bounceSpeed) * bounceHeight;
         transform.localPosition = startLocalPos + new Vector3(0f, yOffset, 0f);
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            AudioManager audioManager = FindFirstObjectByType<AudioManager>();
+            audioManager.CoinSFX();
+        }
+    }
 }
