@@ -26,17 +26,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 7e41ebd449a99b743b31dce4d4cde852,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.10926
+      value: -1.7132701
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7e41ebd449a99b743b31dce4d4cde852,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.24171
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7e41ebd449a99b743b31dce4d4cde852,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.89405
+      value: 1.12258
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7e41ebd449a99b743b31dce4d4cde852,
         type: 3}
@@ -51,7 +51,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 7e41ebd449a99b743b31dce4d4cde852,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7e41ebd449a99b743b31dce4d4cde852,
         type: 3}
@@ -100,6 +100,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 9073864514979920418}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7e41ebd449a99b743b31dce4d4cde852,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2962096820025791261}
   m_SourcePrefab: {fileID: 100100000, guid: 7e41ebd449a99b743b31dce4d4cde852, type: 3}
 --- !u!1 &5953395616103923594 stripped
 GameObject:
@@ -132,7 +136,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!65 &9073864514979920418
 BoxCollider:
@@ -153,5 +157,22 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.051940497, y: 0.05194049, z: 0.067222424}
-  m_Center: {x: 0, y: 0, z: 0.029999992}
+  m_Size: {x: 0.051940497, y: 0.051940482, z: 0.07478308}
+  m_Center: {x: 0, y: -6.397664e-17, z: 0.033780392}
+--- !u!114 &2962096820025791261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5953395616103923594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 320d07c7755f5d4499da8731f93dd537, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FishSlop.ObjectFloat
+  hullCollider: {fileID: 9073864514979920418}
+  restDepth: 0.15704444
+  damping: 0.4
+  torqueDamping: 0.5
+  horizontalDrag: 2
