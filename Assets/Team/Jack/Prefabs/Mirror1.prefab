@@ -101,6 +101,7 @@ GameObject:
   - component: {fileID: 534477937384527162}
   - component: {fileID: 1081261280022588383}
   - component: {fileID: 1791542223418507085}
+  - component: {fileID: 509650570423358588}
   m_Layer: 0
   m_Name: Mirror1
   m_TagString: Untagged
@@ -182,6 +183,27 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &509650570423358588
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4849338106447072701}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.02, y: 0.019999996, z: 0.019999996}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6658965599817354739
 GameObject:
   m_ObjectHideFlags: 0
