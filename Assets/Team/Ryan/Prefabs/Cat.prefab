@@ -11,13 +11,13 @@ GameObject:
   - component: {fileID: 6104301037353159201}
   - component: {fileID: 8207830466923066716}
   - component: {fileID: 9217943544819171790}
-  - component: {fileID: 380184247400235886}
   - component: {fileID: 2143132224497667631}
   - component: {fileID: 8352676525201895659}
   - component: {fileID: 7697551540218988564}
   - component: {fileID: 979493938582144445}
   - component: {fileID: 6909801638044691258}
   - component: {fileID: 6579821763271947378}
+  - component: {fileID: 633009346292978293}
   m_Layer: 0
   m_Name: Cat
   m_TagString: Untagged
@@ -99,29 +99,6 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &380184247400235886
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2690960019517671133}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &2143132224497667631
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -384,6 +361,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CatAnimation
   animator: {fileID: 718400766458922822}
+--- !u!65 &633009346292978293
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2690960019517671133}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.31635594, y: 0.7899076, z: 1.9444854}
+  m_Center: {x: -0.015203476, y: 0.35719448, z: -0.072586894}
 --- !u!1 &4536704227343591850
 GameObject:
   m_ObjectHideFlags: 0
