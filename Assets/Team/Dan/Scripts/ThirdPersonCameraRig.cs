@@ -10,8 +10,7 @@ public class ThirdPersonCameraRig : MonoBehaviour
     [SerializeField] private float defaultPitch = 15f;
 
     [Header("Input Actions")]
-    [SerializeField] InputAction cameraPan;
-    [SerializeField] InputAction freelookHold;
+    [SerializeField] private InputAction cameraPan;
 
     [Header("Look Sensitivity")]
     [SerializeField] private float mouseSensitivityX = 0.14f;
@@ -20,8 +19,7 @@ public class ThirdPersonCameraRig : MonoBehaviour
     [SerializeField] private float gamepadSensitivityY = 120f;
     [SerializeField] private bool invertY = false;
 
-    [Header("Controller Stick Freelook")]
-    [SerializeField] private bool allowStickPanWithoutHold = true;
+    [Header("Controller Stick")]
     [SerializeField] private float stickDeadzone = 0.15f;
 
     [Header("Pitch Limits & Smoothing")]
@@ -29,10 +27,11 @@ public class ThirdPersonCameraRig : MonoBehaviour
     [SerializeField] private float maxPitch = 70f;
     [SerializeField] private float orbitSmoothSpeed = 20f;
 
-    [Header("Follow Mode (When Not Freelooking)")]
+    [Header("Target Follow")]
     [SerializeField] private float followPositionSmooth = 10f;
-    [SerializeField] private float followYawAlignSpeed = 2.5f;
-    [SerializeField] private bool alignYawBehindTarget = true;
+
+    [Header("Cursor")]
+    [SerializeField] private bool lockCursorOnEnable = true;
 
     [Header("Obstacle Avoidance")]
     [SerializeField] private LayerMask collisionMask = ~0;
@@ -44,7 +43,6 @@ public class ThirdPersonCameraRig : MonoBehaviour
     private float _currentYaw;
     private float _currentPitch;
     private Vector3 _currentPivot;
-    private bool _cursorLocked;
 
     private void Start()
     {
@@ -67,13 +65,15 @@ public class ThirdPersonCameraRig : MonoBehaviour
     private void OnEnable()
     {
         cameraPan.Enable();
-        freelookHold.Enable();
+        if (lockCursorOnEnable)
+        {
+            SetCursorLocked(true);
+        }
     }
 
     private void OnDisable()
     {
         cameraPan.Disable();
-        freelookHold.Disable();
         SetCursorLocked(false);
     }
 
@@ -84,29 +84,7 @@ public class ThirdPersonCameraRig : MonoBehaviour
         Vector2 lookDelta = cameraPan.ReadValue<Vector2>();
         bool isPointerInput = cameraPan.activeControl != null && cameraPan.activeControl.device is Pointer;
 
-        bool holdPressed = IsFreelookHoldPressed();
-        bool stickActive = !isPointerInput
-            && allowStickPanWithoutHold
-            && lookDelta.magnitude > stickDeadzone;
-
-        bool isFreelooking = holdPressed || stickActive;
-
-        bool rightMouseDown = Mouse.current != null && Mouse.current.rightButton.isPressed;
-        bool shouldLockCursor = holdPressed && (isPointerInput || rightMouseDown);
-        if (shouldLockCursor != _cursorLocked)
-        {
-            _cursorLocked = shouldLockCursor;
-            SetCursorLocked(_cursorLocked);
-        }
-
-        if (isFreelooking)
-        {
-            UpdateFreelookAngles(lookDelta, isPointerInput);
-        }
-        else
-        {
-            UpdateFollowAngles();
-        }
+        UpdateFreelookAngles(lookDelta, isPointerInput);
 
         _currentYaw = Mathf.LerpAngle(_currentYaw, _yaw, orbitSmoothSpeed * Time.deltaTime);
         _currentPitch = Mathf.Lerp(_currentPitch, _pitch, orbitSmoothSpeed * Time.deltaTime);
@@ -119,16 +97,6 @@ public class ThirdPersonCameraRig : MonoBehaviour
         Vector3 finalPosition = ResolveObstacles(_currentPivot, desiredPosition);
 
         transform.SetPositionAndRotation(finalPosition, rotation);
-    }
-
-    private bool IsFreelookHoldPressed()
-    {
-        if (freelookHold.bindings.Count > 0)
-        {
-            return freelookHold.IsPressed();
-        }
-
-        return Mouse.current != null && Mouse.current.rightButton.isPressed;
     }
 
     private void UpdateFreelookAngles(Vector2 lookDelta, bool isPointerInput)
@@ -148,22 +116,6 @@ public class ThirdPersonCameraRig : MonoBehaviour
         }
 
         _pitch = Mathf.Clamp(_pitch, minPitch, maxPitch);
-    }
-
-    private void UpdateFollowAngles()
-    {
-        _pitch = Mathf.Lerp(_pitch, defaultPitch, followYawAlignSpeed * Time.deltaTime);
-
-        if (alignYawBehindTarget)
-        {
-            Vector3 planarForward = target.forward;
-            planarForward.y = 0f;
-            if (planarForward.sqrMagnitude > 0.001f)
-            {
-                float targetYaw = Quaternion.LookRotation(planarForward).eulerAngles.y;
-                _yaw = Mathf.LerpAngle(_yaw, targetYaw, followYawAlignSpeed * Time.deltaTime);
-            }
-        }
     }
 
     private static Vector2 ApplyRadialDeadzone(Vector2 input, float deadzone)
