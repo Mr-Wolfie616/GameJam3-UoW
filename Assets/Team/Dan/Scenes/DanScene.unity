@@ -1343,6 +1343,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7723891291884464045, guid: 0cf9a299360ddc8459012c4b424ffca5,
         type: 3}
+      propertyPath: m_text
+      value: 'Produced By: Kian
+
+        Development Team
+
+        Dan
+
+        Avery
+
+        Ryan
+
+        Design
+        Team
+
+        Solar
+
+        Caitlin
+
+        Louis
+
+        Josh
+
+        Jack
+
+        Level
+        Designed By: Bradley'
+      objectReference: {fileID: 0}
+    - target: {fileID: 7723891291884464045, guid: 0cf9a299360ddc8459012c4b424ffca5,
+        type: 3}
       propertyPath: m_hasFontAssetChanged
       value: 0
       objectReference: {fileID: 0}

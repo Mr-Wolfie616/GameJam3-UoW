@@ -7,7 +7,7 @@ public class ObjectFloat : MonoBehaviour
     [SerializeField] private WaterRise waterRise;
     private Transform player;
 
-    [SerializeField] private float floatHeight = 1f;
+    [SerializeField] private float floatHeight = 0f;
     [SerializeField] private float followSpeed = 5f;
 
     [SerializeField] private Vector2 bobSpeedRange = new Vector2(0.8f, 1.4f);
@@ -16,6 +16,8 @@ public class ObjectFloat : MonoBehaviour
     private float bobSpeed, bobAmount, bobPhase;
     private float currentY;
 
+    private Vector3 startPos;
+    public bool isFloating = false;
     public bool PlayerOn { get; set; }
 
     private void Awake()
@@ -24,6 +26,8 @@ public class ObjectFloat : MonoBehaviour
         bobAmount = Random.Range(bobAmountRange.x, bobAmountRange.y);
         bobPhase = Random.Range(0f, Mathf.PI * 2f);
         player = GameObject.FindGameObjectWithTag("Player")?.transform;
+
+        startPos = transform.position;
     }
 
     private void Start()
@@ -37,13 +41,24 @@ public class ObjectFloat : MonoBehaviour
         }
 
         currentY = waterRise.waterLevel + floatHeight;
+        if (currentY < startPos.y)
+        {
+            return;
+        }
         SetY(currentY);
     }
 
     private void Update()
-    {
+    {   
         float baseY = waterRise.waterLevel + floatHeight;
         float targetY;
+
+        if(transform.position.y <= baseY)
+        {
+            isFloating = true;
+        }
+
+        if (!isFloating) return;
 
         if (PlayerOn)
         {
