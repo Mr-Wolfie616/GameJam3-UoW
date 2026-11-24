@@ -31,7 +31,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: a924ac09b298ada4e8fa82a83b40cc30,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.146
+      value: 0.601
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a924ac09b298ada4e8fa82a83b40cc30,
         type: 3}
@@ -96,6 +96,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 6841329114831954727}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a924ac09b298ada4e8fa82a83b40cc30,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1653713980905830885}
   m_SourcePrefab: {fileID: 100100000, guid: a924ac09b298ada4e8fa82a83b40cc30, type: 3}
 --- !u!1 &6795371756734748338 stripped
 GameObject:
@@ -124,3 +128,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.016790126, y: 0.004310953, z: 0.016790126}
   m_Center: {x: 5.1315927e-11, y: 0.0017218768, z: 5.1315924e-11}
+--- !u!114 &1653713980905830885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6795371756734748338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f671506129b9774e91a6dca1b51e028, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CoinSpin
+  rotationAxis: {x: 0, y: 0, z: 1}
+  spinSpeed: 180
+  bounceHeight: 0.25
+  bounceSpeed: 3
