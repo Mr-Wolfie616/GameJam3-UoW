@@ -8,6 +8,7 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] private GameObject mainMenuPanel;
     [SerializeField] private GameObject creditsPanel;
     [SerializeField] private GameObject deathPanel;
+    [SerializeField] private GameObject winPanel;
     private void Start()
     {
         if (creditsPanel != null) creditsPanel.SetActive(false);
@@ -39,6 +40,8 @@ public class MainMenuManager : MonoBehaviour
     public void BackToMenu()
     {
         mainMenuPanel.SetActive(true);
+        winPanel.SetActive(false);
+        deathPanel.SetActive(false);
         //Reset Game
     }
 }
