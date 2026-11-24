@@ -116,6 +116,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ObjectHold
   mouth: {fileID: 797421778261078293}
   pickupRange: 0.5719816
+  pickupInput:
+    m_Name: Pickup Input
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 95450c90-0fc7-4852-a1c5-cd4c82099668
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 5c5e73ec-2e0f-48fe-83a8-0f10f33ccaf3
+      m_Path: <Keyboard>/e
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Pickup Input
+      m_Flags: 0
+    m_Flags: 0
+    m_Priority: 0
 --- !u!143 &8352676525201895659
 CharacterController:
   m_ObjectHideFlags: 0
