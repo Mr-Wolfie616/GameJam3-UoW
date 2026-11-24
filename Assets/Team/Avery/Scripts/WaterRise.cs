@@ -10,6 +10,9 @@ public class WaterRise : MonoBehaviour
 
     private void Awake()
     {
+        if (transform.position.y < minHeight) {
+            minHeight = transform.position.y;
+        }
         Vector3 startPos = new Vector3(transform.position.x, minHeight, transform.position.z);
         transform.position = startPos;
     }
