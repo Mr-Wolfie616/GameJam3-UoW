@@ -67,7 +67,7 @@ public class MainMenuManager : MonoBehaviour
         mainMenuPanel.SetActive(true);
         winPanel.SetActive(false);
         deathPanel.SetActive(false);
-        //Reset Game
+        SceneManager.LoadScene(0);
     }
 
     public void ToggleShownCredits()
