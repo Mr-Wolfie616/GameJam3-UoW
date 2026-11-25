@@ -2091,6 +2091,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Water
       objectReference: {fileID: 0}
+    - target: {fileID: 3511849340301304252, guid: d1047602f22fe3544be73433c80f9351,
+        type: 3}
+      propertyPath: riseSpeed
+      value: 0.05
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
