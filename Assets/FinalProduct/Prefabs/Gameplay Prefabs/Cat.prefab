@@ -15,13 +15,12 @@ GameObject:
   - component: {fileID: 8352676525201895659}
   - component: {fileID: 7697551540218988564}
   - component: {fileID: 979493938582144445}
-  - component: {fileID: 6909801638044691258}
   - component: {fileID: 6579821763271947378}
   - component: {fileID: 633009346292978293}
   - component: {fileID: 5671223931989584157}
   - component: {fileID: 2934256707871703978}
   - component: {fileID: 5867458363959011116}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cat
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -43,6 +42,7 @@ Transform:
   m_Children:
   - {fileID: 797421778261078293}
   - {fileID: 5397982549296629734}
+  - {fileID: 4465265675770698407}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8207830466923066716
@@ -144,7 +144,7 @@ CharacterController:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 16
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -330,11 +330,11 @@ MonoBehaviour:
     m_Priority: 0
   moveSpeed: 6
   rotationSpeed: 12
-  groundAcceleration: 18
-  airAcceleration: 6
+  groundAcceleration: 40
+  airAcceleration: 40
   jumpHeight: 1.6
   gravity: -24
-  groundedStickForce: -2
+  groundedStickForce: -1
 --- !u!114 &979493938582144445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -347,28 +347,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8d866a95d0be96408c5387df0e47f26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CoinCollection
---- !u!64 &6909801638044691258
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2690960019517671133}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -1741172286633636167, guid: 019b8484eeaa516468d1383ba5cab50f, type: 3}
 --- !u!114 &6579821763271947378
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -489,6 +467,66 @@ MonoBehaviour:
   playSplashSound: 0
   cameraRig: {fileID: 0}
   cameraHoldTime: 0.75
+--- !u!1 &2997453817577661542
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4465265675770698407}
+  - component: {fileID: 122790211556049039}
+  m_Layer: 3
+  m_Name: Decal Projector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4465265675770698407
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2997453817577661542}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0.000000059604645, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0.428, z: -0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 6104301037353159201}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &122790211556049039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2997453817577661542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0777d029ed3dffa4692f417d4aba19ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.DecalProjector
+  m_Material: {fileID: 2100000, guid: 3efdbd4e7c921d241865070fe6975905, type: 2}
+  m_DrawDistance: 10
+  m_FadeScale: 0.007
+  m_StartAngleFade: 180
+  m_EndAngleFade: 180
+  m_UVScale: {x: 1, y: 1}
+  m_UVBias: {x: 0, y: 0}
+  m_RenderingLayerMask:
+    serializedVersion: 0
+    m_Bits: 4294967295
+  m_ScaleMode: 0
+  m_Offset: {x: 0, y: 0, z: 2.76}
+  m_Size: {x: 0.5, y: 0.5, z: 5}
+  m_FadeFactor: 0.814
+  version: 1
+  m_DecalLayerMask: 1
 --- !u!1 &4536704227343591850
 GameObject:
   m_ObjectHideFlags: 0
