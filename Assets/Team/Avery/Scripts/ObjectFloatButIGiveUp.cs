@@ -28,6 +28,7 @@ public class ObjectFloat : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player")?.transform;
 
         startPos = transform.position;
+		currentY = startPos.y;
     }
 
     private void Start()
@@ -40,14 +41,14 @@ public class ObjectFloat : MonoBehaviour
             return;
         }
 
-        currentY = waterRise.waterLevel + floatHeight;
-        if (currentY < startPos.y && !isFloating)
-        {
-            return;
-        }
-		else {
-			SetY(currentY);
-		}
+        // currentY = waterRise.waterLevel + floatHeight;
+        // if (currentY < startPos.y && !isFloating)
+        // {
+            // return;
+        // }
+		// else {
+			// SetY(currentY);
+		// }
         
     }
 
@@ -56,15 +57,12 @@ public class ObjectFloat : MonoBehaviour
         float baseY = waterRise.waterLevel + floatHeight;
         float targetY;
 
-        if(transform.position.y <= waterRise.waterLevel)
-        {
-            isFloating = true;
-        }
-		else {
-			isFloating = false;
-		}
-
-        if (!isFloating) return;
+        if (!isFloating){
+			if (waterRise.waterLevel >= startPos.y) {
+				isFloating = true;
+				currentY = transform.position.y;
+			}
+		};
 
         if (PlayerOn)
         {
@@ -85,7 +83,7 @@ public class ObjectFloat : MonoBehaviour
     {
         Vector3 p = transform.position;
         p.y = y;
-		if (!isFloating) return;
+		
         transform.position = p;
         if (player != null)
         {
