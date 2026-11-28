@@ -35,7 +35,7 @@ public class ObjectFloat : MonoBehaviour
 		currentY = startPos.y;
 		
 		if (ceiling != null) {
-			ceilingHeight = ceiling.bounds.min.y - GetComponent<Collider>().bounds.max.y;
+			ceilingHeight = ceiling.GetComponent<Collider>().bounds.min.y - GetComponent<Collider>().bounds.max.y;
 			ceilingHeight -= ceilingNegativeOffset;
 		}
     }
