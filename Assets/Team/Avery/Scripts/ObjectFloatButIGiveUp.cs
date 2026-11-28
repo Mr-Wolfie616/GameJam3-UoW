@@ -8,8 +8,10 @@ public class ObjectFloat : MonoBehaviour
 
     [SerializeField] private float floatHeight = 0f;
     [SerializeField] private float followSpeed = 5f;
+	[SerializeField] private float ceilingNegativeOffset = 0.1f;
 	
-	[SerializeField] private float ceilingHeight = 6f;
+	[SerializeField] private Transform ceiling;
+	private float ceilingHeight = 6f;
 
     [SerializeField] private Vector2 bobSpeedRange = new Vector2(0.8f, 1.4f);
     [SerializeField] private Vector2 bobAmountRange = new Vector2(0.05f, 0.15f);
@@ -31,6 +33,11 @@ public class ObjectFloat : MonoBehaviour
 
         startPos = transform.position;
 		currentY = startPos.y;
+		
+		if (ceiling != null) {
+			ceilingHeight = ceiling.bounds.min.y - GetComponent<Collider>().bounds.max.y;
+			ceilingHeight -= ceilingNegativeOffset;
+		}
     }
 
     private void Start()
