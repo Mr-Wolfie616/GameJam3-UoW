@@ -41,11 +41,14 @@ public class ObjectFloat : MonoBehaviour
         }
 
         currentY = waterRise.waterLevel + floatHeight;
-        if (currentY < startPos.y)
+        if (currentY < startPos.y && !isFloating)
         {
             return;
         }
-        SetY(currentY);
+		else {
+			SetY(currentY);
+		}
+        
     }
 
     private void Update()
@@ -53,10 +56,13 @@ public class ObjectFloat : MonoBehaviour
         float baseY = waterRise.waterLevel + floatHeight;
         float targetY;
 
-        if(transform.position.y <= baseY)
+        if(transform.position.y <= waterRise.waterLevel)
         {
             isFloating = true;
         }
+		else {
+			isFloating = false;
+		}
 
         if (!isFloating) return;
 
@@ -79,6 +85,7 @@ public class ObjectFloat : MonoBehaviour
     {
         Vector3 p = transform.position;
         p.y = y;
+		if (!isFloating) return;
         transform.position = p;
         if (player != null)
         {
