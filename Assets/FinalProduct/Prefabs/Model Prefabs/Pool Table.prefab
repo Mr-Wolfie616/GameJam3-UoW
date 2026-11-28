@@ -86,5 +86,33 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7f402a898223c354295cba873c056b7e,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 211980252905172420}
   m_SourcePrefab: {fileID: 100100000, guid: 7f402a898223c354295cba873c056b7e, type: 3}
+--- !u!1 &7115287375662900148 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 7f402a898223c354295cba873c056b7e,
+    type: 3}
+  m_PrefabInstance: {fileID: 7962361918834368229}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &211980252905172420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7115287375662900148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea7da6d5f61f40c4dbb7b5726924c450, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObjectFloat
+  waterRise: {fileID: 0}
+  floatHeight: 0
+  followSpeed: 5
+  bobSpeedRange: {x: 0.8, y: 1.4}
+  bobAmountRange: {x: 0.05, y: 0.15}
+  isFloating: 0

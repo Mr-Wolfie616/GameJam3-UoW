@@ -121,6 +121,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 692336083495714987}
+  - component: {fileID: 639594617041634188}
   m_Layer: 0
   m_Name: CatTree2
   m_TagString: Untagged
@@ -158,6 +159,24 @@ Transform:
   - {fileID: 2926201398021160325}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &639594617041634188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 811161019309857735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea7da6d5f61f40c4dbb7b5726924c450, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObjectFloat
+  waterRise: {fileID: 0}
+  floatHeight: 0
+  followSpeed: 5
+  bobSpeedRange: {x: 0.8, y: 1.4}
+  bobAmountRange: {x: 0.05, y: 0.15}
+  isFloating: 0
 --- !u!1 &1103997196542436595
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3536403748079368678}
   - component: {fileID: 5911992972559707223}
   - component: {fileID: 4581208633039871641}
+  - component: {fileID: 544919612580077471}
   m_Layer: 0
   m_Name: Counter2
   m_TagString: Untagged
@@ -115,6 +116,24 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.02, y: 0.019999998, z: 0.019999998}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &544919612580077471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 702439664668277366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea7da6d5f61f40c4dbb7b5726924c450, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObjectFloat
+  waterRise: {fileID: 0}
+  floatHeight: 0
+  followSpeed: 5
+  bobSpeedRange: {x: 0.8, y: 1.4}
+  bobAmountRange: {x: 0.05, y: 0.15}
+  isFloating: 0
 --- !u!1 &2761056974071419583
 GameObject:
   m_ObjectHideFlags: 0

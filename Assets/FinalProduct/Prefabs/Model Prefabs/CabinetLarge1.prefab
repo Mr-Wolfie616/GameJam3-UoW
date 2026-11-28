@@ -214,6 +214,7 @@ GameObject:
   - component: {fileID: 2716168644404863843}
   - component: {fileID: 4892859234725814584}
   - component: {fileID: 5202028092135688992}
+  - component: {fileID: 2105244876885717711}
   m_Layer: 0
   m_Name: CabinetLarge1
   m_TagString: Untagged
@@ -316,3 +317,21 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.02, y: 0.019999994, z: 0.019999994}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2105244876885717711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6670482672710989422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea7da6d5f61f40c4dbb7b5726924c450, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObjectFloat
+  waterRise: {fileID: 0}
+  floatHeight: 0
+  followSpeed: 5
+  bobSpeedRange: {x: 0.8, y: 1.4}
+  bobAmountRange: {x: 0.05, y: 0.15}
+  isFloating: 0

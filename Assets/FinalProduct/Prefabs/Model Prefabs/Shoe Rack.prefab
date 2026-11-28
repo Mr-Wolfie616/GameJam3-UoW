@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7555448831506503003}
   - component: {fileID: 5608938022556331595}
+  - component: {fileID: 4400611204235386146}
   m_Layer: 0
   m_Name: Shoe Rack
   m_TagString: Untagged
@@ -54,6 +55,24 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.3, y: 2, z: 1}
   m_Center: {x: 0.06, y: 0.14, z: 0.05}
+--- !u!114 &4400611204235386146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1480032340670001331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea7da6d5f61f40c4dbb7b5726924c450, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObjectFloat
+  waterRise: {fileID: 0}
+  floatHeight: 0
+  followSpeed: 5
+  bobSpeedRange: {x: 0.8, y: 1.4}
+  bobAmountRange: {x: 0.05, y: 0.15}
+  isFloating: 0
 --- !u!1001 &5305119373365098381
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -71,6 +71,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 5235005252142410786}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a206c5e4460da93419eaf4600aa5692a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7814373372797085580}
   m_SourcePrefab: {fileID: 100100000, guid: a206c5e4460da93419eaf4600aa5692a, type: 3}
 --- !u!1 &8918700221752472340 stripped
 GameObject:
@@ -100,3 +104,21 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 70948873267775455, guid: a206c5e4460da93419eaf4600aa5692a, type: 3}
+--- !u!114 &7814373372797085580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8918700221752472340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea7da6d5f61f40c4dbb7b5726924c450, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObjectFloat
+  waterRise: {fileID: 0}
+  floatHeight: 0
+  followSpeed: 5
+  bobSpeedRange: {x: 0.8, y: 1.4}
+  bobAmountRange: {x: 0.05, y: 0.15}
+  isFloating: 0

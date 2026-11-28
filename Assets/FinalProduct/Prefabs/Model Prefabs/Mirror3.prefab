@@ -140,6 +140,7 @@ GameObject:
   - component: {fileID: 923343429542623903}
   - component: {fileID: 3127370261357896650}
   - component: {fileID: -5253780655625786732}
+  - component: {fileID: 8613884338799546816}
   m_Layer: 0
   m_Name: Mirror3
   m_TagString: Untagged
@@ -242,6 +243,24 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.02, y: 0.019999996, z: 0.019999996}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8613884338799546816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7083096739874457423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea7da6d5f61f40c4dbb7b5726924c450, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObjectFloat
+  waterRise: {fileID: 0}
+  floatHeight: 0.1
+  followSpeed: 5
+  bobSpeedRange: {x: 0.8, y: 1.4}
+  bobAmountRange: {x: 0, y: 0}
+  isFloating: 0
 --- !u!1 &7744616185351174225
 GameObject:
   m_ObjectHideFlags: 0
