@@ -8,12 +8,15 @@ public class ObjectFloat : MonoBehaviour
 
     [SerializeField] private float floatHeight = 0f;
     [SerializeField] private float followSpeed = 5f;
+	
+	[SerializeField] private float ceilingHeight = 6f;
 
     [SerializeField] private Vector2 bobSpeedRange = new Vector2(0.8f, 1.4f);
     [SerializeField] private Vector2 bobAmountRange = new Vector2(0.05f, 0.15f);
 
     private float bobSpeed, bobAmount, bobPhase;
     private float currentY;
+	private float maxY;
 
     private Vector3 startPos;
     public bool isFloating = false;
@@ -42,7 +45,8 @@ public class ObjectFloat : MonoBehaviour
 		
 		startPos = transform.position;
 		currentY = startPos.y;
-		
+		maxY = startPos.y + ceilingHeight;
+
 		isFloating = false;
     }
 
@@ -60,16 +64,17 @@ public class ObjectFloat : MonoBehaviour
 
         if (PlayerOn)
         {
-            targetY = Mathf.Max(currentY, baseY);
+            targetY = Mathf.Min(Mathf.Max(currentY, baseY), maxY);
         }
         else
         {
             float t = Time.time;
             float bob = (Mathf.Sin(t * bobSpeed + bobPhase) + 0.5f * Mathf.Sin(t * bobSpeed * 2.3f + bobPhase * 1.7f)) * bobAmount;
-            targetY = baseY + bob;
+            targetY = Mathf.Min(baseY + bob, maxY);
         }
 
         currentY = Mathf.Lerp(currentY, targetY, 1f - Mathf.Exp(-followSpeed * Time.deltaTime));
+		currentY = Mathf.Min(currentY, maxY);
         SetY(currentY);
     }
 
