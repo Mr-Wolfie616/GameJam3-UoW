@@ -40,16 +40,11 @@ public class ObjectFloat : MonoBehaviour
             enabled = false;
             return;
         }
-
-        // currentY = waterRise.waterLevel + floatHeight;
-        // if (currentY < startPos.y && !isFloating)
-        // {
-            // return;
-        // }
-		// else {
-			// SetY(currentY);
-		// }
-        
+		
+		startPos = transform.position;
+		currentY = startPos.y;
+		
+		isFloating = false;
     }
 
     private void Update()
@@ -58,11 +53,18 @@ public class ObjectFloat : MonoBehaviour
         float targetY;
 
         if (!isFloating){
-			if (waterRise.waterLevel >= startPos.y) {
-				isFloating = true;
-				currentY = transform.position.y;
-			}
+		if (waterRise.waterLevel < startPos.y) { return; }
+			
+			isFloating = true;
+			currentY = transform.position.y;
 		};
+		
+		if (isFloating) {
+			if (waterRise.waterLevel > startPos.y) { return; }
+			
+			isFloating = false;
+			transform.position = startPos;
+		}
 
         if (PlayerOn)
         {
