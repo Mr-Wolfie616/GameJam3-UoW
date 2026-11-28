@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 [DefaultExecutionOrder(-100)]
@@ -58,13 +57,6 @@ public class ObjectFloat : MonoBehaviour
 			isFloating = true;
 			currentY = transform.position.y;
 		};
-		
-		if (isFloating) {
-			if (waterRise.waterLevel > startPos.y) { return; }
-			
-			isFloating = false;
-			transform.position = startPos;
-		}
 
         if (PlayerOn)
         {

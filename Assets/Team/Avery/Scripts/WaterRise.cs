@@ -15,6 +15,8 @@ public class WaterRise : MonoBehaviour
         }
         Vector3 startPos = new Vector3(transform.position.x, minHeight, transform.position.z);
         transform.position = startPos;
+		
+		waterLevel = transform.position.y;
     }
 
     private void Update()
